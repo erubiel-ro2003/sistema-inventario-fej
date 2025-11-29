@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tenants",
+  "info": {
+    "singularName": "tenant",
+    "pluralName": "tenants",
+    "displayName": "tenant"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "empresa_id": {
+      "type": "uid",
+      "targetField": "nombre"
+    },
+    "direccion": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "biginteger"
+    },
+    "correo": {
+      "type": "email"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": [
+        "activo",
+        "suspendido"
+      ]
+    },
+    "categorias": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::categoria.categoria",
+      "mappedBy": "tenant"
+    },
+    "productos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::producto.producto",
+      "mappedBy": "tenant"
+    },
+    "compras": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::compra.compra",
+      "mappedBy": "tenant"
+    },
+    "movimientos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::movimiento.movimiento",
+      "mappedBy": "tenant"
+    },
+    "devolucions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::devolucion.devolucion",
+      "mappedBy": "tenant"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "tenant"
+    }
+  }
+}
